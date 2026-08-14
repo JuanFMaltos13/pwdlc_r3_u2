@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario · Formulario</title>
+  
+  <style>
+    /* Estilo Global */
+    body {
+      background: linear-gradient(145deg, #f6f9fc 0%, #e9f0f5 100%);
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+
+    /* Fondo */
+    .form-wrapper {
+      background-color: #ffffff;
+      max-width: 720px;
+      width: 100%;
+      padding: 2.5rem 2.8rem;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px -12px rgba(0, 20, 30, 0.25),
+                  0 8px 16px -6px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.2s ease;
+    }
+
+    /* Título */
+    #titulo-registro {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #032543;
+      margin-bottom: 0.6rem;
+      border-left: 6px solid #5594bb;
+      padding-left: 1rem;
+    }
+
+    /* Subtítulo */
+    .subtitulo {
+      font-size: 0.95rem;
+      color: #4a6479;
+      margin-bottom: 3.5rem;
+      font-weight: 400;
+      border-bottom: 3px solid #c6aecb;
+      padding-bottom: 0.75rem;
+    }
+
+    /* Estilo de los campos - clases */
+    .campo {
+      margin-bottom: 2.0rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Etiquetas */
+    .campo label {
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: darkblue;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Entradas y Textarea */
+    .campo input,
+    .campo textarea {
+      font-family: sans-serif;
+      font-size: 1.0rem;
+      padding: 0.8rem 1rem;
+      background-color: whitesmoke;
+      border: 1.5px solid #d5e1e9;
+      border-radius: 16px;
+      transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+      color: #1f2e3b;
+      width: 100%;
+    }
+
+    .campo input:focus,
+    .campo textarea:focus {
+      outline: none;
+      border-color: #3b8cbf;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 4px rgba(59, 140, 191, 0.15);
+    }
+
+    .campo textarea {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.5;
+    }
+
+    /* Check Boxes de Intereses */
+    .intereses-box {
+      background-color: whitesmoke;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      margin: 0.5rem 0 1.8rem 0;
+      border: 1px solid #dae8f2;
+    }
+
+    .intereses-box legend {
+      font-weight: 600;
+      color: #1a3a4e;
+      font-size: 1rem;
+      padding: 0 0.8rem;
+    }
+
+    .grupo-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .grupo-checkboxes label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.98rem;
+      color: #1f3f55;
+      cursor: pointer;
+      font-weight: 450;
+    }
+
+    .grupo-checkboxes input[type="checkbox"] {
+      width: 1.2rem;
+      height: 1.2rem;
+      accent-color: #3b8cbf;
+      border-radius: 6px;
+      border: 1.5px solid #b6cedc;
+      transition: 0.15s;
+      cursor: pointer;
+    }
+
+    .grupo-checkboxes input[type="checkbox"]:checked {
+      transform: scale(1.05);
+    }
+
+    /* Botón de Envío */
+    .btn-submit {
+      background: #1f4b66;
+      border: none;
+      border-radius: 40px;
+      padding: 1rem 1.8rem;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', sans-serif;
+      font-weight: 600;
+      font-size: 1.0rem;
+      color: white;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      letter-spacing: 0.3px;
+      border: 1px solid #2a5f7a;
+      box-shadow: 0 4px 8px rgba(25, 70, 100, 0.15);
+      margin-top: 0.8rem;
+    }
+
+    .btn-submit:hover {
+      background: #123a4f;
+      border-color: #0f3142;
+      box-shadow: 0 8px 14px rgba(20, 60, 90, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.97);
+      background: #0e2d3d;
+    }
+
+    /* Estilo para el indicador de requerido */
+    .requerido {
+      color: #b13e4b;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <div class="form-wrapper">
+    <!-- Título con ID -->
+    <h1 id="titulo-registro">Registro de la persona usuaria</h1>
+    <div class="subtitulo">Completa los datos solicitados</div>
+    
+    <!-- Formulario -->
+    <form action="#" method="post" id="form-registro">
+      <!-- Nombre -->
+      <div class="campo">
+        <label for="nombre"><i>👤</i> Nombre: <span class="requerido">*</span></label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan" required>
+      </div>
+
+      <!-- Apellido -->
+      <div class="campo">
+        <label for="apellido"><i>👤</i> Apellido: <span class="requerido">*</span></label>
+        <input type="text" id="apellido" name="apellido" placeholder="Ej. Maltos" required>
+      </div>
+
+      <!-- Correo electrónico -->
+      <div class="campo">
+        <label for="email"><i>✉️</i> Correo electrónico: <span class="requerido">*</span></label>
+        <input type="email" id="email" name="email" placeholder="usuario@dominio.com" required>
+      </div>
+      
+      <!-- Contraseña -->
+      <div class="campo">
+        <label for="password"><i>🔐</i> Contraseña: <span class="requerido">*</span></label>
+        <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres" required minlength="8">
+      </div>          
+      
+      <!-- Área de Texto -->
+      <div class="campo">
+        <label for="descripcion"><i>📝</i> Breve descripción sobre ti</label>
+        <textarea id="descripcion" name="descripcion" placeholder="Da una breve descripción de ti..."></textarea>         
+      </div>
+      
+      <!-- CheckBoxes de Intereses -->
+      <fieldset class="intereses-box">
+        <legend>✨ Selecciona tus Intereses</legend>
+        <div class="grupo-checkboxes">
+          <label for="interes-tec">
+            <input type="checkbox" id="interes-tec" name="intereses" value="Tecnología"> Tecnología
+          </label>
+          <label for="interes-arte">
+            <input type="checkbox" id="interes-arte" name="intereses" value="Arte"> Arte
+          </label>
+          <label for="interes-deporte">
+            <input type="checkbox" id="interes-deporte" name="intereses" value="Deporte"> Deporte
+          </label>
+          <label for="interes-lectura">
+            <input type="checkbox" id="interes-lectura" name="intereses" value="Lectura"> Lectura
+          </label>
+          <label for="interes-musica">
+            <input type="checkbox" id="interes-musica" name="intereses" value="Música"> Música
+          </label>
+        </div>
+      </fieldset>
+      
+      <!-- Botón de Envío -->
+      <button type="submit" class="btn-submit">📋 <strong>Registrarse</strong></button>
+
+      <!-- Mensaje de ayuda -->
+      <p style="font-size: 0.75rem; color: #5e7d92; margin-top: 1.2rem; text-align: center; border-top: 1px solid #dae6ef; padding-top: 1rem;">
+        <small>Los campos con <span class="requerido">*</span> son obligatorios</small>
+      </p>
+    </form>
+  </div>
+</body>
+</html>
